@@ -10,7 +10,7 @@ WORD_BANK = {
 
 # Class for hangman gameplay
 class PlayHangman
-  attr_accessor :word_bank, :word, :hint
+  attr_accessor :word_bank, :word, :hint, :word_display
 
   def initialize(word_bank)
     self.word_bank = word_bank
@@ -20,5 +20,9 @@ class PlayHangman
     word_selection = word_bank.to_a.sample
     self.word = word_selection[0]
     self.hint = word_selection[1]
+  end
+
+  def create_new_word_display
+    self.word_display = word.chars.map { |_char| '_' }.join
   end
 end

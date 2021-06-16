@@ -25,6 +25,11 @@ class PlayHangmanTest < Test::Unit::TestCase
 
   def test_display_empty_letter_slots
     # pass if empty letter slots displayed if word is selected, and number of slots matches word char count
+    @hangman_game.select_word_and_hint({ 'cricket' => 'A game popular in India' })
+    @hangman_game.create_new_word_display
+    assert_equal '_______', @hangman_game.word_display,
+                 "hangman_game.word_display should equal '_______',
+                  the number of spaces equal to @hangman_game.word.length"
   end
 
   def test_receive_user_input
