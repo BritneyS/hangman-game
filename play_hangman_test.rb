@@ -3,8 +3,18 @@
 require 'test/unit'
 require_relative './play_hangman'
 
+TEST_WORD_BANK = {
+  'cricket' => 'A game popular in India',
+  'lottery' => 'Names are drawn to win a prize...or not!',
+  'snake' => 'A sssneaky reptile'
+}
+
 # Test class for hangman gameplay
 class PlayHangmanTest < Test::Unit::TestCase
+  def setup
+    @hangman_game = PlayHangman.new(TEST_WORD_BANK)
+  end
+
   def test_word_and_selection
     # pass if word and hint is selected from word bank
   end
