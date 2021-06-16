@@ -7,7 +7,7 @@ TEST_WORD_BANK = {
   'cricket' => 'A game popular in India',
   'lottery' => 'Names are drawn to win a prize...or not!',
   'snake' => 'A sssneaky reptile'
-}
+}.freeze
 
 # Test class for hangman gameplay
 class PlayHangmanTest < Test::Unit::TestCase
@@ -17,6 +17,10 @@ class PlayHangmanTest < Test::Unit::TestCase
 
   def test_word_and_selection
     # pass if word and hint is selected from word bank
+    @hangman_game.select_word_and_hint({ 'cricket' => 'A game popular in India' })
+    assert_equal 'cricket', @hangman_game.word, "hangman_game.word should equal 'cricket'"
+    assert_equal 'A game popular in India', @hangman_game.hint,
+                 "hangman_game.hint should equal 'A game popular in India'"
   end
 
   def test_display_empty_letter_slots
