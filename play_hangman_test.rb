@@ -29,6 +29,10 @@ class PlayHangmanTest < Test::Unit::TestCase
     # pass if input check returns false when input is multiple characters
   end
 
+  def test_return_hint_if_user_asks_for_hint
+    # pass if hint is returned
+  end
+
   def test_valid_letter_guess
     # pass if guess check returns true for alphabetical character
   end
