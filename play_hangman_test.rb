@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test/unit'
-require_relative './play'
+require_relative './play_hangman'
 
 # Test class for hangman gameplay
 class PlayHangmanTest < Test::Unit::TestCase
