@@ -2,6 +2,7 @@
 
 require 'test/unit'
 require_relative './play_hangman'
+require_relative './extensions/string'
 
 TEST_WORD_BANK = {
   'cricket' => 'A game popular in India',
@@ -32,20 +33,41 @@ class PlayHangmanTest < Test::Unit::TestCase
                   the number of spaces equal to @hangman_game.word.length"
   end
 
-  def test_receive_user_input
-    # pass if user input received
-  end
+  # TODO: research how to test this with user input dependency
+  # def test_receive_user_input_for_guess
+  #   # pass if user input received
+  #   @hangman_game.get_user_guess
+  #   assert_not_nil @hangman_game.guess, "hangman_game.guess should contain user's input"
+  # end
 
   def test_check_valid_user_input
     # pass if input check returns true when input is a single alphabetical character
+    assert_equal true, @hangman_game.guess_valid?('Q'),
+                 'hangman_game.guess_valid? should return true if a single alpha character'
   end
 
   def test_check_invalid_user_input_non_alpha_character
     # pass if input check returns false when input is a single non-alphabetical character
+    assert_equal false, @hangman_game.guess_valid?('7'),
+                 'hangman_game.guess_valid? should return false if a non-alpha character'
+  end
+
+  def test_check_invalid_user_input_special_character
+    # pass if input check returns false when input is a single non-alphabetical character
+    assert_equal false, @hangman_game.guess_valid?('@'),
+                 'hangman_game.guess_valid? should return false if special character'
   end
 
   def test_check_invalid_user_input_more_than_one_character
     # pass if input check returns false when input is multiple characters
+    assert_equal false, @hangman_game.guess_valid?('qT'),
+                 'hangman_game.guess_valid? should return false if more than one alpha character'
+  end
+
+  def test_check_invalid_user_input_empty_character
+    # pass if input check returns false when input is multiple characters
+    assert_equal false, @hangman_game.guess_valid?(''),
+                 'hangman_game.guess_valid? should return false if no characters'
   end
 
   def test_return_hint_if_user_asks_for_hint
